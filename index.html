@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banner</title>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <img
+      src="./illustration.png"
+      alt=""
+      style="
+        display: block;
+        margin: 0 auto;
+        max-width: 450px;
+        width: 100%;
+        height: auto;
+      "
+    />
+    <div
+      id="here"
+      style="margin-top: 48px; margin-left: 24px; margin-right: 24px"
+    >
+      <div style="text-align: center; margin-top: 24px">
+        <div
+          style="
+            color: #94a3b8;
+            font-size: 16px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            margin-bottom: 8px;
+          "
+        >
+          INTRODUCING
+        </div>
+        <div
+          style="
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 28px;
+          "
+        >
+          Smart Chapters
+        </div>
+        <ul
+          style="
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 420px;
+            text-align: left;
+            color: #64748b;
+            font-size: 20px;
+          "
+        >
+          <li
+            style="margin-bottom: 28px; display: flex; align-items: flex-start"
+          >
+            <svg
+              width="24"
+              height="24"
+              style="margin-right: 12px; margin-top: 2px; color: #94a3b8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+            Get a detailed breakdown of calls by topics and timestamps
+          </li>
+          <li
+            style="margin-bottom: 28px; display: flex; align-items: flex-start"
+          >
+            <svg
+              width="24"
+              height="24"
+              style="margin-right: 12px; margin-top: 2px; color: #94a3b8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+            Quickly jump to the moments that matter
+          </li>
+          <li style="display: flex; align-items: flex-start">
+            <svg
+              width="24"
+              height="24"
+              style="margin-right: 12px; margin-top: 2px; color: #94a3b8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path d="M5 13l4 4L19 7" />
+            </svg>
+            Access key insights with AI-powered chaptering
+          </li>
+        </ul>
+      </div>
+    </div>
+    <button
+      style="
+        position: fixed;
+        left: 50%;
+        bottom: 32px;
+        transform: translateX(-50%);
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        border-radius: 24px;
+        padding: 12px 56px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        z-index: 1000;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+      "
+      onmousedown="this.style.boxShadow='none'"
+      onmouseup="this.style.boxShadow='none'"
+      onfocus="this.style.boxShadow='none'"
+      onblur="this.style.boxShadow='none'"
+      onclick="onDone()"
+    >
+      Okay
+    </button>
+  </body>
+  <script>
+    function onDone() {
+      console.log("onDone");
+      carousel_web_view.onDone();
+    }
+  </script>
+</html>
