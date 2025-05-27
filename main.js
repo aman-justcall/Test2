@@ -29,6 +29,7 @@ function onAction(action) {
     action: action,
     message: message,
   };
+  console.log(payload);
   try {
     // handle in android
     window.carousel_web_view.onAction(JSON.stringify(payload));
