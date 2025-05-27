@@ -29,7 +29,7 @@ function onAction(action) {
     action: action,
     message: message,
   };
-  console.log(payload);
+  console.log(JSON.stringify(payload));
   try {
     // handle in android
     window.carousel_web_view.onAction(JSON.stringify(payload));
@@ -133,7 +133,6 @@ textarea.addEventListener("input", function () {
 ratingItems.forEach((item) => {
   item.addEventListener("click", function () {
     let rating = parseInt(item.textContent);
-    console.log(item.textContent, rating);
     ratingItems.forEach((mItem) => {
       let mRating = parseInt(mItem.textContent);
       if (mRating <= rating) {
