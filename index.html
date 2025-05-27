@@ -2,140 +2,273 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banner</title>
-  </head>
-  <body style="margin: 0; padding: 0">
-    <img
-      src="./illustration.png"
-      alt=""
-      style="
-        display: block;
-        margin: 0 auto;
-        max-width: 450px;
-        width: 100%;
-        height: auto;
-      "
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <div
-      id="here"
-      style="margin-top: 48px; margin-left: 24px; margin-right: 24px"
-    >
-      <div style="text-align: center; margin-top: 24px">
-        <div
-          style="
-            color: #94a3b8;
-            font-size: 16px;
-            letter-spacing: 1px;
-            font-weight: 500;
-            margin-bottom: 8px;
-          "
-        >
-          INTRODUCING
-        </div>
-        <div
-          style="
-            font-size: 2rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 28px;
-          "
-        >
-          Smart Chapters
-        </div>
-        <ul
-          style="
-            list-style: none;
-            padding: 0;
-            margin: 0 auto;
-            max-width: 420px;
-            text-align: left;
-            color: #64748b;
-            font-size: 20px;
-          "
-        >
-          <li
-            style="margin-bottom: 28px; display: flex; align-items: flex-start"
-          >
-            <svg
-              width="24"
-              height="24"
-              style="margin-right: 12px; margin-top: 2px; color: #94a3b8"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-            Get a detailed breakdown of calls by topics and timestamps
-          </li>
-          <li
-            style="margin-bottom: 28px; display: flex; align-items: flex-start"
-          >
-            <svg
-              width="24"
-              height="24"
-              style="margin-right: 12px; margin-top: 2px; color: #94a3b8"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-            Quickly jump to the moments that matter
-          </li>
-          <li style="display: flex; align-items: flex-start">
-            <svg
-              width="24"
-              height="24"
-              style="margin-right: 12px; margin-top: 2px; color: #94a3b8"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-            Access key insights with AI-powered chaptering
-          </li>
-        </ul>
-      </div>
-    </div>
-    <button
-      style="
+    <title>JustCall</title>
+    <script src="./main.js" defer></script>
+    <style>
+      @font-face {
+        font-family: "Inter";
+        src: url("../assets/font/inter_variable_font.ttf") format("truetype");
+        font-weight: 100 900;
+        font-style: normal;
+      }
+      body {
+        font-family: Inter, sans-serif;
+        user-select: none;
+      }
+      label {
+        color: #101828;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+      }
+      textarea {
+        width: 100%;
+        margin-top: 12px;
+        border: 1.5px solid #e4e7ec;
+        border-radius: 4px;
+        padding: 10px 12px;
+        font-family: Inter, sans-serif;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        user-select: auto;
+        resize: none;
+        box-sizing: border-box;
+        outline: none;
+      }
+      textarea:focus {
+        border: 1.5px solid #1976f6;
+      }
+      #char-counter {
+        margin-top: 4px;
+        color: #667085;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      #rating-bar {
+        margin-top: 8px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-self: stretch;
+        overflow-x: auto;
+        border-radius: 4px;
+        border: 1px solid #e4e7ec;
+      }
+      .rating-item {
+        display: flex;
+        flex: 1;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        border-right: 1px solid #e4e7ec;
+        color: #101828;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+      }
+      .rating-item:last-child {
+        border-right: none;
+      }
+      .rating-item.selected {
+        background: #004ce6;
+        color: #fff;
+      }
+      #rating-bar-subtexts {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 8px;
+      }
+      #rating-bar-subtext {
+        color: #98a2b3;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+      }
+      #snooze-btn {
+        flex: 1;
+        border-radius: 4px;
+        border: 1px solid #004ce6;
+        background: #ffffff;
+        padding: 10px 20px;
+        justify-content: center;
+        color: #004ce6;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+      }
+      #snooze-btn.hidden {
+        display: none;
+      }
+      #snooze-btn.disabled {
+        border: 1px solid #e4e7ec;
+        color: #e4e7ec;
+        pointer-events: none;
+      }
+      #submit-btn {
+        flex: 1;
+        border-radius: 4px;
+        border: 1px solid #004ce6;
+        background: #004ce6;
+        padding: 10px 20px;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+      }
+      #submit-btn.disabled {
+        border: 1px solid #e4e7ec;
+        background: #e4e7ec;
+        pointer-events: none;
+      }
+      #loader {
+        display: block;
         position: fixed;
         left: 50%;
-        bottom: 32px;
+        top: 50%;
         transform: translateX(-50%);
-        background: #2563eb;
-        color: #fff;
-        border: none;
-        border-radius: 24px;
-        padding: 12px 56px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        z-index: 1000;
-        user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+        bottom: 0px;
+        z-index: 100;
+      }
+      #loader.hidden {
+        display: none;
+      }
+      #loader-circle {
+        border: 8px solid #e4e7ec;
+        border-top: 8px solid #004ce6;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body style="background-color: #fff; margin: 0px; padding: 0px">
+    <div id="loader" class="hidden">
+      <div id="loader-circle"></div>
+    </div>
+    <header
+      style="
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        padding: 16px;
       "
-      onmousedown="this.style.boxShadow='none'"
-      onmouseup="this.style.boxShadow='none'"
-      onfocus="this.style.boxShadow='none'"
-      onblur="this.style.boxShadow='none'"
-      onclick="onDone()"
     >
-      Okay
-    </button>
+      <div id="close-btn" onclick="onAction('close')">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="#667085"
+            style="
+              stroke: #667085;
+              stroke: color(display-p3 0.4 0.4392 0.5216);
+              stroke-opacity: 1;
+            "
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <h2
+        style="
+          flex: 1;
+          text-align: center;
+          font-size: 20px;
+          margin: 0;
+          font-weight: 600;
+        "
+      >
+        What Should We Build Next?
+      </h2>
+    </header>
+
+    <form id="feedback-form" style="padding: 16px">
+      <label id="question-1" for="feature-request">
+        What features would you like to see in JustCall mobile app next?
+      </label>
+      <textarea
+        id="feature-request"
+        maxlength="500"
+        rows="6"
+        placeholder="Please share your suggestion"
+      ></textarea>
+      <div id="char-counter">0/500</div>
+
+      <div style="height: 24px"></div>
+
+      <label class="question-label" for="rating-bar">
+        On a scale of 1-10, how has your JustCall experience been so far?
+      </label>
+      <div id="rating-bar">
+        <span class="rating-item">0</span>
+        <span class="rating-item">1</span>
+        <span class="rating-item">2</span>
+        <span class="rating-item">3</span>
+        <span class="rating-item">4</span>
+        <span class="rating-item">5</span>
+        <span class="rating-item">6</span>
+        <span class="rating-item">7</span>
+        <span class="rating-item">8</span>
+        <span class="rating-item">9</span>
+        <span class="rating-item">10</span>
+      </div>
+      <div id="rating-bar-subtexts">
+        <div id="rating-bar-subtext">Not Satisfied</div>
+        <div id="rating-bar-subtext">Very Satisfied</div>
+      </div>
+    </form>
+    <div
+      style="
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+        padding: 16px;
+        box-sizing: border-box;
+        border-top: 1px solid #e4e7ec;
+        background: #fff;
+      "
+    >
+      <button id="snooze-btn" onclick="onAction('snooze')">
+        Snooze for a day
+      </button>
+      <button id="submit-btn" onclick="submitFeedback()">Submit</button>
+    </div>
   </body>
-  <script>
-    function onDone() {
-      console.log("onDone");
-      carousel_web_view.onDone();
-    }
-  </script>
 </html>
